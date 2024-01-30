@@ -13,8 +13,10 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     NavigationMenuViewport,
+    navigationMenuTriggerStyle,
   } from "@/components/ui/navigation-menu"
 import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
   
 
 const routes = [
@@ -78,7 +80,8 @@ const Header = () => {
         <NavigationMenu className='hidden md:block'>
         <NavigationMenuList className='gap-6'>
             <NavigationMenuItem>
-            <NavigationMenuTrigger onClick={() => setPath('#resources')} className={cn({
+            <NavigationMenuTrigger onClick={() => setPath('#resources')} 
+            className={cn({
                 'dark:text-white' : path === '#resources',
                 'dark:text-white/40': path !== '#resources',
                 'font-normal': true,
@@ -87,11 +90,98 @@ const Header = () => {
                 Resources
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-                <NavigationMenuLink>Link</NavigationMenuLink>
+              <ul className=' grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]' >
+                  <li className=' row-span-3 '>
+                    <span className=' flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline
+                     outline-none focus:shadow-md' >
+                      Welcome
+                    </span>
+                  </li>
+                  <ListItem href='#' title='Introduction' >
+                      Reusable components built using Radix UI and Tailwind CSS and some developer stuff that you probably would'nt know yet
+                  </ListItem>
+                  <ListItem href='#' title='Installation' >
+                      How to install dependancies and structure the app
+                  </ListItem>
+                  <ListItem href='#' title='Styling' >
+                      Stylings for headings, paragraphs, lists....etc.
+                  </ListItem>
+                  <ListItem href='#' title='Test' >
+                      Here we go again witch
+                  </ListItem>
+              </ul>
+
             </NavigationMenuContent>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+
+            <NavigationMenuTrigger 
+              onClick={() => {setPath('#pricing');}}
+              className={cn({
+                'dark:text-white' : path === '#pricing',
+                'dark:text-white/40': path !== '#pricing',
+                'font-normal': true,
+                'text-xl': true,
+            })}>
+                Pricing
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className=' grid w-[400px] gap-3 p-4 md:grid-row-2 ' >
+                <ListItem title='Pro Plan' href='#'  >
+                  Unlock full power with collaboration
+                </ListItem>
+                <ListItem title='Free Plan' href='#'  >
+                  Great for teams just starting out
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuContent>
+                <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]' >
+                  {components.map((component) => (
+                    <React.Fragment key={component.title}>
+                      <ListItem title={component.title} href={component.href}>
+                        {component.description}
+                      </ListItem>
+                    </React.Fragment>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+                  <NavigationMenuItem>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(),{
+
+                        'dark:text-white': path === "#testimonials",
+                        'dark:text-white/40': path !== 'testimonials',
+                        'font-normal' : true,
+                        'text-xl' : true,
+                      }
+                        
+                        
+                        )} >
+                          Testimonial
+
+                      </NavigationMenuLink>
+                  </NavigationMenuItem>
         </NavigationMenuList>
         </NavigationMenu>
+
+        <aside className=' flex w-full gap-2 justify-end ' >
+                  <Link href={'/login'}>
+                    <Button variant={'btn-secondary'} className=' p-1 hidden sm:block' >
+                        Login
+                    </Button>
+                  </Link>
+
+                  <Link href={'/signup'}>
+                    <Button variant={'btn-primary'} className=' whitespace-nowrap' >
+                        Signup
+                    </Button>
+                  </Link>
+                  
+        </aside>
 
        
         
@@ -100,3 +190,25 @@ const Header = () => {
 }
 
 export default Header
+
+const ListItem =  React.forwardRef
+<React.ElementRef<'a'>,
+ React.ComponentPropsWithoutRef<'a'>
+ > (({className, title, children, ...props}, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink>
+          <a ref={ref} className={cn('group block select-none space-y-1 font-medium leading-none')} {...props} >
+              <div className='text-white text-sm font-medium leading-none ' >
+                {title}
+              </div>
+              <p className=' group-hover:text-white/70 line-clamp-2 text-sm leading-snug text-white/40 ' >
+                {children}
+              </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    )
+ } ) ;
+
+ ListItem.displayName = 'ListItem';
