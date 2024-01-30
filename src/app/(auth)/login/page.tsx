@@ -56,51 +56,40 @@ const onSubmit : SubmitHandler<z.infer<typeof FormSchema>> = async(
     <FormDescription className=' text-foreground/60'>
     All in one collaborative workspace for developers.
     </FormDescription>
-    <FormField 
-    disabled={isLoading}
-    control={form.control}
-    name='email'
-    render={( field ) => (
-
-        <FormItem>
-            <FormControl>
-                <Input 
-                type='email' 
-                placeholder='Email'
-                {...field}
+    <FormField
+          disabled={isLoading}
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  {...field}
                 />
-                
-            </FormControl>
-            <FormMessage></FormMessage>
-        </FormItem>
-        
-    )}
-    >
-        
-    </FormField>
-
-    <FormField 
-    disabled={isLoading}
-    control={form.control}
-    name='email'
-    render={( field ) => (
-
-        <FormItem>
-            <FormControl>
-                <Input 
-                type='password' 
-                placeholder='Password'
-                {...field}
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          disabled={isLoading}
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  {...field}
                 />
-                
-            </FormControl>
-            <FormMessage></FormMessage>
-        </FormItem>
-        
-    )}
-    >
-        
-    </FormField>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
     {submitError && <FormMessage>{submitError}</FormMessage>}
     <Button 
     type='submit'
