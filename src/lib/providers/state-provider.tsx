@@ -11,6 +11,7 @@ import React, {
 import { File, Folder, workspace } from '@/lib/supabase/supabase.types';
 import { usePathname } from 'next/navigation';
 import { getFiles } from '@/lib/supabase/queries';
+import { getFolders } from '@/lib/supabase/queries';
 
 export type appFoldersType = Folder & { files: File[] | [] };
 export type appWorkspacesType = workspace & {
@@ -120,8 +121,8 @@ const appReducer = (
               ...workspace,
               folders: action.payload.folders.sort(
                 (a, b) =>
-                  new Date(a.createdAt).getTime() -
-                  new Date(b.createdAt).getTime()
+                  new Date(a.createdAt as string).getTime() -
+                  new Date(b.createdAt as string).getTime()
               ),
             };
           }
@@ -136,8 +137,8 @@ const appReducer = (
             ...workspace,
             folders: [...workspace.folders, action.payload.folder].sort(
               (a, b) =>
-                new Date (a.createdAt).getTime() -
-                new Date(b.createdAt).getTime()
+                new Date (a.createdAt as string).getTime() -
+                new Date(b.createdAt as string).getTime()
             ),
           };
         }),
