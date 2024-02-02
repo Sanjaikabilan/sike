@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1706378425206,
-      "tag": "0000_yielding_hellfire_club",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1706378908134,
-      "tag": "0001_strange_colossus",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1706380015266,
-      "tag": "0002_overconfident_mastermind",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1706862509649,
-      "tag": "0003_omniscient_firebird",
+      "when": 1706876778974,
+      "tag": "0000_daily_wolfsbane",
       "breakpoints": true
     }
   ]
