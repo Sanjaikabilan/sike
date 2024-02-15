@@ -98,7 +98,7 @@ const Header = () => {
                     </span>
                   </li>
                   <ListItem href='#' title='Introduction' >
-                      Reusable components built using Radix UI and Tailwind CSS and some developer stuff that you probably would'nt know yet
+                      Reusable components built using Radix UI and Tailwind CSS and some developer stuff that you probably wouldnt know yet
                   </ListItem>
                   <ListItem href='#' title='Installation' >
                       How to install dependancies and structure the app
