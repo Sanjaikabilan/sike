@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { SelectGroup } from '@radix-ui/react-select';
-import { Lock, Plus, Share } from 'lucide-react';
+import { Lock, Plus, Share, UsersRound } from 'lucide-react';
 import { Button } from '../ui/button';
 import { v4 } from 'uuid';
 import { addCollaborators, createWorkspace } from '@/lib/supabase/queries';
@@ -135,7 +135,7 @@ const WorkspaceCreator = () => {
               </SelectItem>
               <SelectItem value="shared">
                 <div className="p-2 flex gap-4 justify-center items-center">
-                  <Share></Share>
+                  <UsersRound />
                   <article className="text-left flex flex-col">
                     <span>Shared</span>
                     <span>You can invite collaborators.</span>
