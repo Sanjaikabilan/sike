@@ -10,6 +10,7 @@ import {
 } from "@/lib/supabase/queries";
 import { redirect } from "next/navigation";
 import { twMerge } from "tailwind-merge";
+import WorkspaceDropdown from "./workspace-dropdown";
 
 interface SidebarProps {
   params: { workspaceId: string };
@@ -47,9 +48,23 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
 
   //get all the different workspaces => private, collaborated, shared
   return (
-    <aside className={twMerge("hidden sm:flex sm:flex-col w-[280px] shrink-0 p-4 md:gap-4 !justify-between", className)}>
+    <aside
+      className={twMerge(
+        "hidden sm:flex sm:flex-col w-[280px] shrink-0 p-4 md:gap-4 !justify-between",
+        className
+      )}
+    >
       <div>
-        heloloo
+        <WorkspaceDropdown
+          privateWorkspaces={privateWorkspaces}
+          sharedWorkspaces={sharedWorkspaces}
+          collaboratingWorkspaces={collaboratingWorkspaces}
+          defaultValue={[
+            ...privateWorkspaces,
+            ...collaboratingWorkspaces,
+            ...sharedWorkspaces,
+          ].find((workspace) => workspace.id === params.workspaceId)}
+        ></WorkspaceDropdown>
       </div>
     </aside>
   );

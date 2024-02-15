@@ -135,3 +135,7 @@ export const getFiles = async (folderId: string) => {
     return { data: null, error: "Error" };
   }
 };
+
+export const addCollaborators = async (user: User[], workspaceId: string) => {
+
+};
