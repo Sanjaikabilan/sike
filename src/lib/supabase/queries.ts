@@ -153,8 +153,8 @@ export const createFolder = async (folder: Folder) => {
     const results = await db.insert(folders).values(folder);
     return { data: null, error: null };
   } catch (error) {
-    console.log(error)
-    return { data: null, error: 'Error' };
+    console.log(error);
+    return { data: null, error: "Error" };
   }
 };
 
@@ -167,4 +167,17 @@ export const getUsersFromSearch = async (email: string) => {
     .from(users)
     .where(ilike(users.email, `${email}%`));
   return accounts;
+};
+
+export const updateFolder = async (
+  folder: Partial<Folder>,
+  folderId: string
+) => {
+  try {
+    await db.update(folders).set(folder).where(eq(folders.id, folderId));
+    return { data: null, error: null };
+  } catch (error) {
+    console.log(error);
+    return { data: null, error: "Error" };
+  }
 };
